@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.anjas.createlavasource.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "FluidManipulationBehaviourMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

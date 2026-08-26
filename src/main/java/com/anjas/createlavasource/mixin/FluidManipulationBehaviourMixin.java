@@ -1,7 +1,6 @@
 package com.anjas.createlavasource.mixin;
 
 import com.zurrtum.create.content.fluids.transfer.FluidManipulationBehaviour;
-import com.zurrtum.create.foundation.blockEntity.SmartBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
@@ -22,16 +21,18 @@ public abstract class FluidManipulationBehaviourMixin {
     @Nullable
     BlockPos rootPos;
 
-    @Shadow
-    protected abstract Level getLevel();
-
     @Inject(method = "maxBlocks", at = @At("HEAD"), cancellable = true, remap = false)
     private void createLavaSource$useSmallLavaThreshold(CallbackInfoReturnable<Integer> cir) {
         if (rootPos == null) {
             return;
         }
 
-        FluidState state = getLevel().getFluidState(rootPos);
+        Level level = ((FluidManipulationBehaviour) (Object) this).getLevel();
+        if (level == null) {
+            return;
+        }
+
+        FluidState state = level.getFluidState(rootPos);
         if (state.getType() == Fluids.LAVA || state.getType() == Fluids.FLOWING_LAVA) {
             cir.setReturnValue(LAVA_BOTTOMLESS_THRESHOLD);
         }

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "create_lava_source",
+  "version": "${version}",
+  "name": "Create Lava Source",
+  "description": "Makes a connected 27-block lava reservoir bottomless for Create Fly hose pulleys.",
+  "authors": ["apm23"],
+  "environment": "*",
+  "mixins": [
+    "create_lava_source.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "26.2",
+    "create": ">=6.0.9"
+  }
+}

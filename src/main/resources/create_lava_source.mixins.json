@@ -6,6 +6,9 @@
     "FluidManipulationBehaviourMixin",
     "FluidPropagatorMixin"
   ],
+  "client": [
+    "client.CarriageAudioBehaviourMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
